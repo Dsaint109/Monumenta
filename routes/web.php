@@ -183,25 +183,71 @@ Route::group([], function () {
 
 Route::group(['domain' => 'fashion.localhost'], function () {
 
-    Route::get('/home', function () {
-        return view('Fashion.index');
-    })->name('fashion-home');
 
-    Route::get('/about', function (){
-        return view('Fashion.pages.about');
-    })->name('fashion-about');
 
-    Route::get('/Faq', function (){
-        return view('Fashion.pages.fashion-faq');
-    })->name('fashion-faq');
+    //GET ROUTES
 
-    Route::get('/contact', function (){
-        return view('Fashion.pages.fashion-contact-us');
-    })->name('fashion-contact-us');
+    Route::get('/home', [
+        'uses' => 'FashionPagesController@index',
+        'as' => 'fashion-home'
+    ]);
+
+    Route::get('/about',[
+        'uses' => 'FashionPagesController@getAbout',
+        'as' => 'fashion-about'
+    ]);
+
+    Route::get('/Faq',[
+        'uses' => 'FashionPagesController@getFaq',
+        'as' => 'fashion-faq'
+    ]);
+
+    Route::get('/contact', [
+        'uses' => 'FashionPagesController@getContact',
+        'as' => 'fashion-contact-us'
+    ]);
+
+    Route::get('/Sell', [
+        'uses' => 'FashionPagesController@getSell',
+        'as' => 'fashion-sell'
+    ])->middleware('auth', 'owns.shop.away');
+
+    Route::get('/Dashboard', [
+        'uses' => 'FashionPagesController@getDashboard',
+        'as' => 'shop-dashboard'
+    ])->middleware('auth', 'owns.shop.to');
+
+    Route::get('/Fdwa2KT3hLnVzFwzlzEauNUz8xdM38XTOlxR1sPL2b8XDqHALRxlTom9TPGk', [
+        'uses' => 'ShopController@getRemoveImage'
+    ])->middleware('auth', 'owns.shop.to');
+
+
 
     Route::get('/logout', [
         'uses' => 'UserController@getLogout',
         'as' => 'fashion-logout'
     ])->middleware('auth');
+
+
+
+
+
+    // POST Routes ->
+    /*
+     *---------------------------------------------------------------------------
+     * All the routes that have to do with forms and posting of data have
+     * been assigned to their respective views/controllers.
+     * --------------------------------------------------------------------------
+     */
+
+    Route::post('/sell', [
+        'uses' => 'ShopController@postShopCreate',
+    ]);
+
+    Route::post('/shop-image', [
+        'uses' => 'ShopController@postImageUpload',
+    ]);
+
+
 
 });

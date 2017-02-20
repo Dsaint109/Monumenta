@@ -163,7 +163,8 @@ class UserController extends Controller
             return response($errors, 422);
         }
         */
-        if ($validator->passes()) {
+        if ($validator->passes())
+        {
 
             $user = Auth::user();
 

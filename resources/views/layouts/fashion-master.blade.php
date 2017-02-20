@@ -35,11 +35,6 @@
     <!-- //js -->
 
 
-    <!-- countdown -->
-    <link rel="stylesheet" href="{{ URL::to('Fashion/css/jquery.countdown.css') }}" />
-    <!-- //countdown -->
-
-
 
     <!-- for bootstrap working -->
     <script type="text/javascript" src="{{ URL::to('js/bootstrap.min.js') }}"></script>
@@ -47,6 +42,7 @@
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Qwigley" rel="stylesheet">
 
 
     <!-- start-smooth-scrolling -->
@@ -65,6 +61,7 @@
 </head>
 
 <body>
+
 
 @include('Fashion.includes.modal')
 
@@ -85,37 +82,49 @@
 @yield('content')
 <!-- //Content -->
 
-<!-- banner-bottom -->
+
 @yield('banner-bottom')
-<!-- //banner-bottom -->
 
 
-<!-- new-products -->
+
+
 @yield('new-products')
-<!-- //new-products -->
 
 
-<!-- special-deals -->
+
+
 @yield('special-deals')
-<!-- //special-deals -->
 
 
-<!-- top-brands -->
+
+
 @yield('top-brands')
-<!-- //top-brands -->
 
 
-<!-- newsletter -->
+
+
 @yield('newsletter')
-<!-- //newsletter -->
 
 
-<!-- footer -->
+
+
 @yield('footer')
-<!-- //footer -->
+
+<!-- swal -->
+<script src="{{ URL::to('js/sweetalert.min.js')  }}"></script>
 @include('sweet::alert')
+<!-- //swal -->
+
+<!-- flashy -->
 @include('flashy::message')
+<!-- //flashy -->
+
 </body>
 
 </html>
 <script type="text/javascript" src="{{ URL::to('Fashion/js/jquery.flexisel.js') }}"></script>
+<script type="text/javascript">
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>

@@ -1,23 +1,44 @@
+<!-- top-brands -->
 <div class="top-brands">
     <div class="container">
-        <h3>Top Brands</h3>
+        <h3>Top Shops</h3>
         <div class="sliderfig">
             <ul id="flexiselDemo1">
-                <li>
-                    <img src="images/Fashion/4.png" alt=" " class="img-responsive" />
-                </li>
-                <li>
-                    <img src="images/Fashion/5.png" alt=" " class="img-responsive" />
-                </li>
-                <li>
-                    <img src="images/Fashion/6.png" alt=" " class="img-responsive" />
-                </li>
-                <li>
-                    <img src="images/Fashion/7.png" alt=" " class="img-responsive" />
-                </li>
-                <li>
-                    <img src="images/Fashion/46.jpg" alt=" " class="img-responsive" />
-                </li>
+
+                @foreach($shops as $shop)
+                    <li>
+                        @if($shop->image_url)
+                            <img src="{{ $shop->image_url }}" alt="{{ $shop->name }}" class="img-responsive" />
+                        @else
+                            <div class="fill-logo">
+                                @if(strlen($shop->name) > 16)
+                                    <h1 id="fill-text-name" style="font-size: 2.5em">{{ $shop->name }}</h1>
+                                @else
+                                    <h1 id="fill-text-name">{{ $shop->name }}</h1>
+                                @endif
+                                <h2 id="fill-text-cp">{{ $shop->tagline }}</h2>
+                            </div>
+                        @endif
+                    </li>
+                @endforeach
+
+
+                    <li>
+                        <img src="images/Fashion/5.png" alt=" " class="img-responsive" />
+                    </li>
+
+                    <li>
+                        <img src="images/Fashion/6.png" alt=" " class="img-responsive" />
+                    </li>
+
+                    <li>
+                        <img src="images/Fashion/7.png" alt=" " class="img-responsive" />
+                    </li>
+
+                    <li>
+                        <img src="images/Fashion/46.jpg" alt=" " class="img-responsive" />
+                    </li>
+
             </ul>
         </div>
         <script type="text/javascript">
@@ -49,3 +70,4 @@
         </script>
     </div>
 </div>
+<!-- //top-brands -->

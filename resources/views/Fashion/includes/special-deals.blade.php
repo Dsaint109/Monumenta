@@ -1,3 +1,4 @@
+<!-- special-deals -->
 <div class="special-deals">
     <div class="container">
         <h2>Special Deals</h2>
@@ -119,3 +120,4 @@
         </div>
     </div>
 </div>
+<!-- //special-deals -->

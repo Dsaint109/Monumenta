@@ -42,19 +42,30 @@ Author URL: http://saintswebnology.com
     <!-- //for-mobile-apps -->
 
 
-    <!--fonts-->
-    <link href='{{ URL::to('https://fonts.googleapis.com/css?family=Ubuntu+Condensed')  }}' rel='stylesheet'
-          type='text/css'>
-    <link href="{{ URL::to('https://fonts.googleapis.com/css?family=Roboto:300')  }}" rel="stylesheet">
-    <link href='{{ URL::to('https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic')  }}'
-          rel='stylesheet' type='text/css'>
-    <!--//fonts-->
-
 
     <!-- js -->
     <script type="text/javascript" src="{{ URL::to('js/jquery.min.js')  }}"></script>
     <script src="{{ URL::to('js/modernizr.custom.js')  }}"></script>
+
+        <script type="text/javascript">
+            //paste this code under head tag or in a seperate js file.
+            // Wait for window load
+            $(window).load(function() {
+                // Animate loader off screen
+                $(".se-pre-con").fadeOut("slow");;
+            });
+        </script>
     <!-- //js -->
+
+        <!--fonts-->
+        <link href='{{ URL::to('https://fonts.googleapis.com/css?family=Ubuntu+Condensed')  }}' rel='stylesheet'
+              type='text/css'>
+        <link href="{{ URL::to('https://fonts.googleapis.com/css?family=Roboto:300')  }}" rel="stylesheet">
+        <link href='{{ URL::to('https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic')  }}'
+              rel='stylesheet' type='text/css'>
+        <!--//fonts-->
+
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="{{ URL::to('js/bootstrap.min.js')  }}"></script>
     <script src="{{ URL::to('js/bootstrap-select.js')  }}"></script>
@@ -107,25 +118,18 @@ Author URL: http://saintswebnology.com
     <link href="{{ URL::to('css/sweetalert.css')  }}" rel="stylesheet" type="text/css" media="all"/>
     <link href="{{ URL::to('css/style.css')  }}" rel="stylesheet" type="text/css" media="all"/>
 
-    <script type="text/javascript">
-        //paste this code under head tag or in a seperate js file.
-        // Wait for window load
-        $(window).load(function() {
-            // Animate loader off screen
-            $(".se-pre-con").fadeOut("slow");;
-        });
-    </script>
     @yield('extra-head')
 </head>
 
 <body>
+<div class="se-pre-con"></div>
 
 <script src="{{ URL::to('js/jquery.validate.min.js')  }}"></script>
 <script src="{{ URL::to('js/sweetalert.min.js')  }}"></script>
 
 @include('sweet::alert')
 
-<div class="se-pre-con"></div>
+
 
 
 <!-- header section starts -->

@@ -1,5 +1,5 @@
 @if(!Auth::user())
-
+<!-- User ish -->
 <div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="myModal88"
      aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -101,5 +101,5 @@
 <script>
     $('#myModal88').modal('show');
 </script>
-
+<!-- //User ish -->
 @endif

@@ -36,3 +36,7 @@
    *     }
    *
    */
+
+
+
+     //$table->integer('stock')->unsigned();

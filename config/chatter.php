@@ -129,7 +129,7 @@ return [
     'user' => [
         'namespace' => 'App\User',
         'database_field_with_user_name' => 'name',
-        'relative_url_to_profile' => '',
+        'relative_url_to_profile' => '/profile/{slug}',
         'relative_url_to_image_assets' => '/images/uploads/profile/',
         'avatar_image_database_field' => 'avatar'
     ],

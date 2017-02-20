@@ -8,11 +8,32 @@
                 </a>
 
                 <ul class="dropdown-menu" style="left: 0px;" aria-labelledby="dLabel">
-                    <li><a href="{{ route('profile') }}"><i class="fa fa-btn fa-user"></i>&nbsp;&nbsp;&nbsp; Profile</a></li>
-                    <li><a href="#"><i class="fa fa-btn fa-bell"></i>&nbsp;&nbsp;&nbsp; Notifications </a></li>
-                    <li><a href=""><i class="fa fa-btn fa-shopping-bag"></i>&nbsp;&nbsp;&nbsp; Sell </a></li>
-                    <li role="separator" class="divider"></li>
+
+
+
+                    @if(!$shops->whereIn('user_id', Auth::user()->id)->first())
+                        <li><a href="{{ route('profile') }}"><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp; Profile</a></li>
+                        <li><a href="{{ route('fashion-sell') }}"><i class="fa fa-tag"></i>&nbsp;&nbsp;&nbsp; Sell </a></li>
+                        <li role="separator" class="divider"></li>
+                    @else
+                        <li><a href="{{ route('shop-dashboard') }}"><i class="fa fa-cogs"></i>&nbsp;&nbsp;&nbsp; Dashboard</a></li>
+                        <li><a href="{{-- route('shop-dashboard') --}}"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp; Add Products</a></li>
+                        <li><a href="{{-- route('shop-dashboard') --}}"><i class="fa fa-cart-arrow-down"></i>&nbsp;&nbsp;&nbsp; My Products</a></li>
+                        <li><a href="{{-- route('shop-notifications') --}}"><i class="fa fa-bell"></i>&nbsp;&nbsp;&nbsp; Notifications </a></li>
+                        <li><a href="{{-- route('deal-create') --}}"><i class="fa fa-shopping-bag"></i>&nbsp;&nbsp;&nbsp; Create Deals </a></li>
+
+                        @if (! $shops->whereIn('user_id', Auth::user()->id)->first()->featured)
+                            <li><a href=""><i class="fa fa-btn fa-shopping-bag"></i>&nbsp;&nbsp;&nbsp; Boost my Shop</a></li>
+                        @endif
+
+                        <li role="separator" class="divider"></li>
+                    @endif
+
+
+
                     <li><a href="{{ route('fashion-logout') }}"><i class="fa fa-btn fa-sign-out"></i>&nbsp;&nbsp;&nbsp; Logout </a></li>
+
+
                 </ul>
             @else
                 <a href="#" data-toggle="modal" class="a" data-target="#myModal88"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
@@ -58,7 +79,9 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="{{ route('fashion-home') }}" class="act">Home</a></li>
+                    <li class="active"><a href="{{ route('fashion-home') }}" class="@if($route == 'fashion-home')
+                                    act
+                                @endif">Home</a></li>
                     <!-- Mega Menu -->
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
@@ -66,25 +89,30 @@
                             <div class="row">
                                 <div class="col-sm-3">
                                     <ul class="multi-column-dropdown">
-                                        <h6>Clothing</h6>
-                                        <li><a href="dresses.html">Dresses<span>New</span></a></li>
-                                        <li><a href="sweaters.html">Sweaters</a></li>
-                                        <li><a href="skirts.html">Shorts & Skirts</a></li>
-                                        <li><a href="jeans.html">Jeans</a></li>
-                                        <li><a href="shirts.html">Shirts & Tops<span>New</span></a></li>
+
+                                        <h6>Categories</h6>
+
+                                        @foreach($categories as $category)
+                                            @if($loop->first || $loop->last)
+                                                <li><a href="Category/{{ $category->name }}">{{ $category->name }}<span>New</span></a></li>
+                                            @else
+                                                <li><a href="Category/{{ $category->name }}">{{ $category->name }}</a></li>
+                                            @endif
+                                        @endforeach
+
                                     </ul>
                                 </div>
                                 <div class="col-sm-3">
                                     <ul class="multi-column-dropdown">
-                                        <h6>Ethnic Wear</h6>
-                                        <li><a href="salwars.html">Salwars</a></li>
-                                        <li><a href="sarees.html">Sarees<span>New</span></a></li>
-                                        <li><a href="products.html"><i>Summer Store</i></a></li>
+                                        <h6>Deals for you</h6>
+                                        <li><a href="Featured/Products">Featured</a></li>
+                                        <li><a href="Deals/Sales">Sales<span>New</span></a></li>
+                                        <li><a href="Shops/{{ $shops->where('featured', 1)->first()->slug }}"><i>{{ $shops->where('featured', 1)->first()->name }}</i></a></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-2">
                                     <ul class="multi-column-dropdown">
-                                        <h6>Foot Wear</h6>
+                                        <h6>Trending</h6>
                                         <li><a href="sandals.html">Flats</a></li>
                                         <li><a href="sandals.html">Sandals</a></li>
                                         <li><a href="sandals.html">Boots</a></li>
@@ -101,8 +129,12 @@
                             </div>
                         </ul>
                     </li>
-                    <li><a href="{{ route('fashion-about') }}">About Us</a></li>
-                    <li><a href="">Sell</a></li>
+                    <li><a href="{{ route('fashion-about') }}" class="@if($route == 'fashion-about')
+                                act
+                            @endif">About Us</a></li>
+                    <li><a href="{{ route('fashion-sell') }}" class="@if($route == 'fashion-sell')
+                                act
+                            @endif">Sell</a></li>
                     <li><a href="{{ route('fashion-logout') }}">Back to Monumenta</a></li>
                 </ul>
             </div>

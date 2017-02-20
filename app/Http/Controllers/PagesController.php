@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 use App\User;
+
 use App\Detail;
 
 use App\Http\Requests;
 
+
 class PagesController extends Controller
 {
+
 
     //
     public function index()
     {
         return view('index');
     }
-
 
 
 
@@ -34,34 +36,43 @@ class PagesController extends Controller
 
     }
 
-
     public function getOtherProfile(Detail $detail, $slug)
     {
         $d = $detail->where('slug', $slug)->first();
 
-        $user = $d->user;
-
-        if (Auth::user())
+        if ($d)
         {
-            if (Auth::user()->id == $user->id)
+            $user = $d->user;
+
+            if (Auth::user())
             {
-                return redirect('profile');
+                if (Auth::user()->id == $user->id)
+                {
+                    return redirect('profile');
+
+                }else {
+
+                    $user->load('details');
+
+                    return view('pages.other-profile',compact('user'));
+
+                }
 
             }else {
 
                 $user->load('details');
 
-                return view('pages.other-profile',compact('user'));
+                return view('pages.other-profile', compact('user'));
 
             }
 
-        }else {
+        }else{
 
-            $user->load('details');
-
-            return view('pages.other-profile', compact('user'));
-
+            abort(404);
         }
+
+
+
     }
 
 
@@ -70,7 +81,6 @@ class PagesController extends Controller
     {
         return view('home-login');
     }
-
 
     public function getRegister()
     {
@@ -126,7 +136,6 @@ class PagesController extends Controller
     {
         return view('pages.appdownload');
     }
-
 
 
 

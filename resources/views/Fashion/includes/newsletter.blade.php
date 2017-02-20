@@ -1,3 +1,4 @@
+<!-- newsletter -->
 <div class="newsletter">
     <div class="container">
         <div class="col-md-6 w3agile_newsletter_left">
@@ -13,3 +14,4 @@
         <div class="clearfix"> </div>
     </div>
 </div>
+<!-- //newsletter -->

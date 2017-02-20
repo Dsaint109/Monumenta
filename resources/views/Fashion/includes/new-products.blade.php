@@ -1,3 +1,4 @@
+<!-- new-products -->
 <div class="new-products w31_related_products">
     <div class="container">
         <h3>New Products</h3>
@@ -17,7 +18,7 @@
                                 <img src="images/Fashion/30.jpg" alt=" " class="img-responsive" />
                                 <div class="w3_hs_bottom w3_hs_bottom_sub">
                                     <ul>
-                                        <li>
+                                        <li style="float: none">
                                             <a href="#" data-toggle="modal" data-target="#myModal6"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                                         </li>
                                     </ul>
@@ -46,7 +47,7 @@
                             <img src="images/Fashion/34.jpg" alt=" " class="img-responsive" />
                             <div class="w3_hs_bottom w3_hs_bottom_sub">
                                 <ul>
-                                    <li>
+                                    <li style="float: none">
                                         <a href="#" data-toggle="modal" data-target="#myModal5"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                                     </li>
                                 </ul>
@@ -75,7 +76,7 @@
                             <img src="images/Fashion/38.jpg" alt=" " class="img-responsive" />
                             <div class="w3_hs_bottom w3_hs_bottom_sub">
                                 <ul>
-                                    <li>
+                                    <li style="float: none">
                                         <a href="#" data-toggle="modal" data-target="#myModal6"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                                     </li>
                                 </ul>
@@ -104,7 +105,7 @@
                             <img src="images/Fashion/43.jpg" alt=" " class="img-responsive" />
                             <div class="w3_hs_bottom w3_hs_bottom_sub">
                                 <ul>
-                                    <li>
+                                    <li style="float: none">
                                         <a href="#" data-toggle="modal" data-target="#myModal1"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                                     </li>
                                 </ul>
@@ -133,7 +134,7 @@
                                 <img src="images/Fashion/34.jpg" alt=" " class="img-responsive" />
                                 <div class="w3_hs_bottom w3_hs_bottom_sub">
                                     <ul>
-                                        <li>
+                                        <li style="float: none">
                                             <a href="#" data-toggle="modal" data-target="#myModal5"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                                         </li>
                                     </ul>
@@ -162,7 +163,7 @@
                                 <img src="images/Fashion/38.jpg" alt=" " class="img-responsive" />
                                 <div class="w3_hs_bottom w3_hs_bottom_sub">
                                     <ul>
-                                        <li>
+                                        <li style="float: none">
                                             <a href="#" data-toggle="modal" data-target="#myModal6"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                                         </li>
                                     </ul>
@@ -212,3 +213,4 @@
 
     </div>
 </div>
+<!-- //new-products -->

@@ -456,7 +456,7 @@
                             
                             <p id="bioText">
                                 @if ($user->details->bio)
-                                    {{ $user->details->bio }}
+                                    {!! $user->details->bio !!}
                                 @else
                                     Write something about yourself
                                 @endif

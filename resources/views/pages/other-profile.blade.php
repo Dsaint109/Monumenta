@@ -361,7 +361,7 @@
 
                             <p id="bioText">
                                 @if ($user->details->bio)
-                                    {{ $user->details->bio }}
+                                    {!! $user->details->bio  !!}
                                 @else
                                     <em>Nothing to Show</em>
                                 @endif

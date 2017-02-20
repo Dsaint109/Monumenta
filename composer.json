@@ -18,7 +18,8 @@
         "uxweb/sweet-alert": "^1.4",
         "predis/predis": "^1.1",
         "guzzlehttp/guzzle": "^6.2",
-        "filp/whoops": "^2.1"
+        "filp/whoops": "^2.1",
+        "barryvdh/laravel-ide-helper": "2.3-dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

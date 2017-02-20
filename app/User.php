@@ -15,7 +15,7 @@ class User extends Model implements Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar'
+        'name', 'email', 'avatar'
     ];
 
     /**
@@ -31,4 +31,15 @@ class User extends Model implements Authenticatable
     {
         return $this->hasOne(Detail::class);
     }
+
+    public function shop()
+    {
+        return $this->hasOne(Shop::class);
+    }
+
+
+
+
+
+
 }

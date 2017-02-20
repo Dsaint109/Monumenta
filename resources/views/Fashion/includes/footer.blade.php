@@ -1,3 +1,4 @@
+<!-- footer -->
 <div class="footer">
     <div class="container">
         <div class="w3_footer_grids">
@@ -22,18 +23,16 @@
             <div class="col-md-3 w3_footer_grid">
                 <h3>Category</h3>
                 <ul class="info">
-                    <li><a href="dresses.html">Dresses</a></li>
-                    <li><a href="sweaters.html">Sweaters</a></li>
-                    <li><a href="shirts.html">Shirts</a></li>
-                    <li><a href="sarees.html">Sarees</a></li>
-                    <li><a href="skirts.html">Shorts & Skirts</a></li>
+                    @foreach($categories as $category)
+                        <li><a href="Category/{{ $category->name }}">{{ $category->name }}</a></li>
+                    @endforeach
                 </ul>
             </div>
             <div class="col-md-3 w3_footer_grid">
                 <h3>Profile</h3>
                 <ul class="info">
-                    <li><a href="products.html">Become a Seller</a></li>
-                    <li><a href="checkout.html">My Cart</a></li>
+                    <li><a href="{{ route('fashion-sell') }}">Become a Seller</a></li>
+                    <li><a href="">My Cart</a></li>
                 </ul>
                 <h4>Follow Us</h4>
                 <div class="agileits_social_button">
@@ -59,3 +58,4 @@
         </div>
     </div>
 </div>
+<!-- //footer -->
