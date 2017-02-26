@@ -217,6 +217,16 @@ Route::group(['domain' => 'fashion.localhost'], function () {
         'as' => 'shop-dashboard'
     ])->middleware('auth', 'owns.shop.to');
 
+    Route::get('/My-Products/Add', [
+        'uses' => 'FashionPagesController@getAddProducts',
+        'as' => 'shop-add-products'
+    ])->middleware('auth', 'owns.shop.to');
+
+
+
+
+
+
     Route::get('/Fdwa2KT3hLnVzFwzlzEauNUz8xdM38XTOlxR1sPL2b8XDqHALRxlTom9TPGk', [
         'uses' => 'ShopController@getRemoveImage'
     ])->middleware('auth', 'owns.shop.to');
@@ -248,6 +258,30 @@ Route::group(['domain' => 'fashion.localhost'], function () {
         'uses' => 'ShopController@postImageUpload',
     ]);
 
+    Route::post('/Products/{shop}/Add', [
+        'uses' => 'ProductController@postAddProducts'
+    ])->middleware('not.shop.own');
 
+    Route::post('/My-Products/Add/{optionValue}', [
+        'uses' => 'ProductController@postAddColor'
+    ]);
+
+
+
+
+
+
+    // API Routes ->
+
+    Route::group(['prefix' => 'api'], function (){
+
+        Route::get('/trends', [
+            'uses' => 'TrendController@index',
+            'as' => 'trends.index'
+        ]);
+
+
+    });
 
 });
+

@@ -165,7 +165,6 @@ class UserController extends Controller
         */
         if ($validator->passes())
         {
-
             $user = Auth::user();
 
             if ($request->hasFile('avatar')) {

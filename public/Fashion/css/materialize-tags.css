@@ -1,0 +1,161 @@
+.materialize-tags {
+  background: transparent;
+  display: inline-block;
+  padding: 0 6px;
+  margin-bottom: 10px;
+  color: #444;
+  vertical-align: middle;
+  width: 100%;
+  max-width: 100%;
+  line-height: 22px;
+  cursor: text;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -ms-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s; }
+  @media screen and (max-width: 600px) {
+    .materialize-tags {
+      margin-top: 8px; } }
+  .materialize-tags.active {
+    border-bottom-color: #ad1457;
+    -webkit-box-shadow: 0 1px 0 0 #ad1457;
+    -moz-box-shadow: 0 1px 0 0 #ad1457;
+    box-shadow: 0 1px 0 0 #ad1457;
+    outline: none; }
+  .materialize-tags input {
+    border: none;
+    box-shadow: none;
+    outline: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    width: auto !important;
+    max-width: inherit; }
+    .materialize-tags input::-moz-placeholder {
+      color: #777;
+      opacity: 1; }
+    .materialize-tags input:-ms-input-placeholder {
+      color: #777; }
+    .materialize-tags input::-webkit-input-placeholder {
+      color: #777; }
+    .materialize-tags input:focus {
+      border: none !important;
+      box-shadow: none !important; }
+  .materialize-tags .tt-hint {
+    position: relative !important; }
+  .materialize-tags .tt-input {
+    position: absolute !important;
+    left: 0;
+    width: 100% !important; }
+  .materialize-tags .tt-dropdown-menu {
+    min-width: 200px;
+    max-width: 100%;
+    padding: 10px 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background: #ffffff;
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35); }
+    .materialize-tags .tt-dropdown-menu .tt-suggestion {
+      line-height: 1.1rem !important;
+      padding: 2px 10px !important; }
+    .materialize-tags .tt-dropdown-menu .tt-cursor {
+      background: deepskyblue;
+      color: #ffffff; }
+
+
+.chip {
+  display: inline-block;
+  height: 32px;
+  font-size: 14px;
+  font-weight: 300;
+  color: #ffffff;
+  line-height: 32px;
+  padding: 0 12px;
+  border-radius: 16px;
+  background-color: rgba(0, 0, 0, 0.85);
+  margin-bottom: 5px;
+  margin-right: 5px
+}
+
+.chip img {
+  float: left;
+  margin: 0 8px 0 -12px;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%
+}
+
+.chip .close {
+  cursor: pointer;
+  float: right;
+  font-size: 16px;
+  line-height: 32px;
+  padding-left: 8px
+}
+
+.chips {
+  border: none;
+  border-bottom: 1px solid #9e9e9e;
+  box-shadow: none;
+  margin: 0 0 20px 0;
+  min-height: 45px;
+  outline: none;
+  transition: all .3s
+}
+
+.chips.focus {
+  border-bottom: 1px solid #26a69a;
+  box-shadow: 0 1px 0 0 #26a69a
+}
+
+.chips:hover {
+  cursor: text
+}
+
+.chips .chip.selected {
+  background-color: #26a69a;
+  color: #fff
+}
+
+.chips .input {
+  background: none;
+  border: 0;
+  color: rgba(0,0,0,0.6);
+  display: inline-block;
+  font-size: 1rem;
+  height: 3rem;
+  line-height: 32px;
+  outline: 0;
+  margin: 0;
+  padding: 0 !important;
+  width: 120px !important
+}
+
+.chips .input:focus {
+  border: 0 !important;
+  box-shadow: none !important
+}
+
+.prefix ~ .chips {
+  margin-left: 3rem;
+  width: 92%;
+  width: calc(100% - 3rem)
+}
+
+.chips:empty ~ label {
+  font-size: 0.8rem;
+  -webkit-transform: translateY(-140%);
+  transform: translateY(-140%)
+}
+
+.material-icons {
+    float: right;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 32px;
+    padding-left: 8px;
+}

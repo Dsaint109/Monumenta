@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOptionValuesTable extends Migration
+class CreatePicturesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,11 @@ class CreateOptionValuesTable extends Migration
      */
     public function up()
     {
-        Schema::create('option_values', function (Blueprint $table) {
+        Schema::create('pictures', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('option_id')->unsigned();
-            $table->string('value');
+            $table->string('image_url');
+            $table->morphs('imaginable');
             $table->timestamps();
-
-
-            $table->foreign('option_id')->references('id')
-                  ->on('options')
-                  ->onUpdate('cascade');
-
-
         });
     }
 
@@ -35,6 +28,6 @@ class CreateOptionValuesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('option_values');
+        Schema::dropIfExists('pictures');
     }
 }

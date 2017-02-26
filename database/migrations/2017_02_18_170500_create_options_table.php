@@ -15,8 +15,17 @@ class CreateOptionsTable extends Migration
     {
         Schema::create('options', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type')->unique();
+            $table->integer('product_id')->unsigned();
+            $table->enum('type', ['checkbox', 'select', 'color', 'text']);
+            $table->string('name');
             $table->timestamps();
+
+
+
+            $table->foreign('product_id')->references('id')
+                ->on('products')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

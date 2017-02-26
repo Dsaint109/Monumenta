@@ -7,9 +7,14 @@
     <meta name="keywords" content="@yield('keywords')" />
 
 
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Qwigley" rel="stylesheet">
+
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="theme-color" content="#ad1457">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script type="application/x-javascript">
         addEventListener("load", function() {
@@ -22,9 +27,9 @@
     <!-- //for-mobile-apps -->
 
 
-
     <link href="{{ URL::to('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ URL::to('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ URL::to('css/animate.css')  }}"><!-- load animate -->
     <link href="{{ URL::to('Fashion/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ URL::to('Fashion/css/fasthover.css') }}" rel="stylesheet" type="text/css" media="all" />
 
@@ -40,13 +45,20 @@
     <script type="text/javascript" src="{{ URL::to('js/bootstrap.min.js') }}"></script>
     <!-- //for bootstrap working -->
 
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Qwigley" rel="stylesheet">
 
+
+    <script type="text/javascript">
+        //paste this code under head tag or in a seperate js file.
+        // Wait for window load
+        $(window).load(function() {
+            // Animate loader off screen
+            $(".se-pre-con").fadeOut("slow");;
+        });
+    </script>
 
     <!-- start-smooth-scrolling -->
     <script type="text/javascript">
+
         jQuery(document).ready(function($) {
             $(".scroll").click(function(event){
                 event.preventDefault();
@@ -61,6 +73,21 @@
 </head>
 
 <body>
+<div class="se-pre-con"></div>
+
+
+<!-- swal -->
+<link href="{{ URL::to('css/sweetalert.css')  }}" rel="stylesheet" type="text/css" media="all"/>
+<script src="{{ URL::to('js/sweetalert.min.js')  }}"></script>
+
+
+<!--flexisel -->
+
+<script src="{{ URL::to('Fashion/js/jquery.flexisel.js')  }}"></script>
+
+@include('sweet::alert')
+<!-- //swal -->
+
 
 
 @include('Fashion.includes.modal')
@@ -110,10 +137,7 @@
 
 @yield('footer')
 
-<!-- swal -->
-<script src="{{ URL::to('js/sweetalert.min.js')  }}"></script>
-@include('sweet::alert')
-<!-- //swal -->
+
 
 <!-- flashy -->
 @include('flashy::message')

@@ -36,4 +36,17 @@ class OptionValue extends Model
         return $this->belongsTo(Option::class);
     }
 
+
+    /**
+     * returns all the images for this option value
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function pictures()
+    {
+        return $this->morphMany('App\Picture', 'imaginable');
+    }
+
+
+
 }

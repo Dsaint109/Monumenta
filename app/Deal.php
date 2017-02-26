@@ -30,10 +30,27 @@ class Deal extends Model
     protected $hidden = [];
 
 
-
+    /**
+     * returns the Product that own this Deal.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function product()
     {
         return $this->belongsTo(Product::class);
     }
+
+
+    /**
+     * returns all the images for this deal
+     *
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function pictures()
+    {
+        return $this->morphMany('App\Picture', 'imaginable');
+    }
+
 
 }

@@ -1,10 +1,10 @@
 <div class="header">
     <div class="container">
-        <div class="w3l_login dropdown">
+        <div class="w3l_login dropdown" id="avatarLogin">
 
             @if(Auth::user())
                 <a id="dLabel" data-target="#" class="a" href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    <img src="images/uploads/profile/{{ Auth::user()->avatar }}" width="50px" height="50px" class="img-responsive">
+                    <img src="/images/uploads/profile/{{ Auth::user()->avatar }}" width="50px" height="50px" class="img-responsive">
                 </a>
 
                 <ul class="dropdown-menu" style="left: 0px;" aria-labelledby="dLabel">
@@ -17,7 +17,7 @@
                         <li role="separator" class="divider"></li>
                     @else
                         <li><a href="{{ route('shop-dashboard') }}"><i class="fa fa-cogs"></i>&nbsp;&nbsp;&nbsp; Dashboard</a></li>
-                        <li><a href="{{-- route('shop-dashboard') --}}"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp; Add Products</a></li>
+                        <li><a href="{{ route('shop-add-products') }}"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp; Add Products</a></li>
                         <li><a href="{{-- route('shop-dashboard') --}}"><i class="fa fa-cart-arrow-down"></i>&nbsp;&nbsp;&nbsp; My Products</a></li>
                         <li><a href="{{-- route('shop-notifications') --}}"><i class="fa fa-bell"></i>&nbsp;&nbsp;&nbsp; Notifications </a></li>
                         <li><a href="{{-- route('deal-create') --}}"><i class="fa fa-shopping-bag"></i>&nbsp;&nbsp;&nbsp; Create Deals </a></li>
@@ -107,7 +107,9 @@
                                         <h6>Deals for you</h6>
                                         <li><a href="Featured/Products">Featured</a></li>
                                         <li><a href="Deals/Sales">Sales<span>New</span></a></li>
+                                        @if($shops->where('featured', 1)->first())
                                         <li><a href="Shops/{{ $shops->where('featured', 1)->first()->slug }}"><i>{{ $shops->where('featured', 1)->first()->name }}</i></a></li>
+                                        @endif
                                     </ul>
                                 </div>
                                 <div class="col-sm-2">
@@ -122,7 +124,7 @@
                                 <div class="col-sm-4">
                                     <div class="w3ls_products_pos">
                                         <h4>50%<i>Off/-</i></h4>
-                                        <img src="images/Fashion/1.jpg" alt=" " class="img-responsive" />
+                                        <img src="/images/Fashion/1.jpg" alt=" " class="img-responsive" />
                                     </div>
                                 </div>
                                 <div class="clearfix"></div>

@@ -212,5 +212,38 @@ class FashionPagesController extends Controller
     }
 
 
+    public function getAddProducts(Request $request)
+    {
+
+        //region some dependencies needed by all pages
+
+        $currentRoute = Route::currentRouteName();
+
+        $categories = $this->categories;
+
+        $shops = $this->shops;
+
+        $shop = $shops->where('user_id', $request->user()->id)->first();
+
+
+        $shop->load('user');
+
+        $categories->load('products');
+
+
+
+        //form an array of it
+        $with = ['categories' => $categories, 'shops' => $shops,  'shop' => $shop, 'route' => $currentRoute];
+
+
+        //endregion
+
+
+        return view('Fashion.pages.add-products', $with);
+
+    }
+    
+    
+
 
 }

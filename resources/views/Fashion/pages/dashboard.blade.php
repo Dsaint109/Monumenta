@@ -7,7 +7,11 @@
 @section('banner')
     <div class="banner10" id="home1">
         <div class="container">
-            <h2>{{ $shop->name }}</h2>
+            <h2>
+                <span class="banner-name">{{ $shop->name }}</span>
+                <br>
+                <small class="banner-cp">{{ $shop->tagline }}</small>
+            </h2>
         </div>
     </div>
 @endsection
@@ -25,6 +29,7 @@
 
 @section('content')
     <script src="{{ URL::to('js/jquery.validate.min.js')  }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js"></script>
     <div class="create-brand">
         <div class="container">
 
@@ -96,15 +101,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="shopName" class="col-sm-3 control-label form-label">Shop Link :</label>
+                            <label for="shopLink" class="col-sm-3 control-label form-label">Shop Link :</label>
                             <div class="col-sm-9 form-w3">
-                                <span>
-                                    @if(count($errors))
-                                        <em>{{ $errors->first('name') }}</em>
-                                    @endif
-                                </span>
-                                <input type="text" class="" id="shopLink" maxlength="24" style="font-size: 11px; font-family: monospace; padding-right: 20px; color: #555;" value="https://fashion.monumenta.biz/Shops/{{ $shop->slug }}" disabled="disabled">
-                                <span class="url-counter" style="cursor: pointer" data-toggle="tooltip" data-placement="right" title="Copy"><i class="fa fa-link"></i></span>
+                                <input type="text" class="" id="shopLink" maxlength="24" style="font-size: 11px; font-family: monospace; padding-right: 20px; color: #555;" value="https://fashion.monumenta.biz/Shops/{{ $shop->slug }}" readonly>
+                                <span class="url-counter" style="cursor: pointer" data-toggle="tooltip" data-placement="right" title="Copy" data-clipboard-target="#shopLink" id="copy-this"><i class="fa fa-link"></i></span>
                             </div>
                         </div>
 
@@ -171,6 +171,20 @@
 
         </div>
     </div>
+
+    <div class="team-bottom">
+        <div class="container">
+            <h3>Are You Ready To Add Products?</h3>
+            <p>
+                You can Add products from here or by clicking on on your <button id="toAvatar">avatar</button> at the top of the page
+            </p>
+            <a href="">Start Now</a>
+        </div>
+    </div>
+
+
+
+
     <script type="text/javascript">
         $("#sell-form").validate({
             errorElement: "em",
@@ -205,6 +219,9 @@
     </script>
     <script src="{{ URL::to('js/additional-methods.min.js')  }}"></script>
     <script type="text/javascript" src="{{ URL::to('Fashion/js/dashboard-ajax.js')  }}"></script>
+    <script type="text/javascript">
+        new Clipboard('#copy-this');
+    </script>
 
 @endsection
 

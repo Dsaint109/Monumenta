@@ -40,3 +40,56 @@
 
 
      //$table->integer('stock')->unsigned();
+
+
+
+/*
+*   function simulateKeyPress(character) {
+*      jQuery.event.trigger({ type : 'keypress', which : character.charCodeAt(0) });
+*    }
+*
+*    $(function() {
+*      $('body').keypress(function(e) {
+*        alert(e.which);
+*      });
+*
+*      simulateKeyPress("e");
+*    });
+*
+*
+*
+*/
+
+
+
+
+Have to be able to add more option values to each option
+
+
+    <script>
+
+        var form = document.getElementById('colorImages');
+
+        var request = new XMLHttpRequest();
+
+        form.addEventListener('change', function () {
+            form.addEventListener('submit', function(e){
+                e.preventDefault();
+
+                var formdata = new FormData(form);
+
+                request.open('post', '/My-Products/Add');
+                request.addEventListener('load', transferComplete);
+                request.send(formdata);
+
+            });
+        })
+
+
+        function transferComplete(data){
+
+            console.log(data.currentTarget.response);
+
+        }
+
+    </script>

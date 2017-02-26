@@ -55,5 +55,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'owns.shop.away' => \App\Http\Middleware\RedirectAwayIfOwnsShop::class,
         'owns.shop.to' => \App\Http\Middleware\RedirectToIfOwnsShop::class,
+        'not.shop.own' => \App\Http\Middleware\NotShopOwner::class,
     ];
 }

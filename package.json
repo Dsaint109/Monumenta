@@ -1,18 +1,24 @@
 {
   "private": true,
   "scripts": {
-    "prod": "gulp --production",
-    "dev": "gulp watch"
+    "dev": "node node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run dev -- -w",
+    "watch-poll": "npm run dev -- -w --watch-poll",
+    "hot": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "npm run dev -- -p"
+  },
+  "config": {
+    "webpack": "node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
     "bootstrap-sass": "^3.3.7",
-    "gulp": "^3.9.1",
     "jquery": "^3.1.0",
-    "laravel-elixir": "^6.0.0-11",
-    "laravel-elixir-vue-2": "^0.2.0",
-    "laravel-elixir-webpack-official": "^1.0.2",
+    "laravel-mix": "^0.4.0",
     "lodash": "^4.16.2",
     "vue": "^2.0.1",
-    "vue-resource": "^1.0.3"
+    "webpack": "^2.1.0-beta.28"
+  },
+  "dependencies": {
+    "clipboard": "^1.6.0"
   }
 }

@@ -17,6 +17,7 @@ class CreateDealsTable extends Migration
             $table->increments('id');
             $table->integer('product_id')->unsigned();
             $table->enum('type', ['percent', 'sale']);
+            $table->string('content');
             $table->integer('percentage')->unsigned()->nullable();
             $table->integer('sale_one')->unsigned()->nullable();
             $table->integer('sale_two')->unsigned()->nullable();

@@ -5,6 +5,16 @@
 $(function() {
 
 
+    $('#toAvatar').on('click', function (e) {
+        e.stopPropagation();
+
+        $("body").animate({scrollTop: 0}, "fast");
+
+
+        $('#dLabel').dropdown('toggle');
+    });
+
+
     $('#shopName').on('keyup keydown change blur focus click', function(){
 
         var key = $(this).val();
@@ -26,11 +36,13 @@ $(function() {
 
         $('#fill-text-name').html(key);
 
+        $('.banner-name').html(key);
+
         $('.text-counter').html(dispCount);
 
 
 
-    })
+    });
 
     $('#catchPhrase').on('keyup keydown change', function(){
 
@@ -41,6 +53,8 @@ $(function() {
         var dispCount = 42 - keyCount;
 
         $('#fill-text-cp').html(key);
+
+        $('.banner-cp').html(key);
 
         $('.cat-counter').html(dispCount);
 
