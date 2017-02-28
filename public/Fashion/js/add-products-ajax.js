@@ -231,7 +231,7 @@ $(document).ready(function(){
                                     '</div>';
 
 
-        if(howMany <= 2){
+        if(howMany < 2){
 
             if(type == 1){
 
@@ -248,7 +248,7 @@ $(document).ready(function(){
 
         }else{
 
-            sweetAlert("Max amount exceeded", "You cannot have more than 3 options! Click on a remove or refresh page to remove it.", "error");
+            sweetAlert("Max amount exceeded", "You cannot have more than 2 options! Click on a remove or refresh page to remove it.", "error");
         }
 
 
@@ -493,9 +493,14 @@ $(document).ready(function(){
 
         var ab = $('[data-b="1"]');
 
+        $('.item_add').hide();
+
+        $('.paoss').show(100);
+
         for (var z = 0; z < ab.length; z++){
 
             var ac = ab.eq(z);
+
 
             ac.submit(function (e) {
                 e.preventDefault();
@@ -517,7 +522,10 @@ $(document).ready(function(){
 
                     if(event.lengthComputable === true){
                         percent = Math.round((event.loaded / event.total) * 100);
-                        console.log(percent);
+                        setProgress(percent);
+                        if(percent == 100){
+                            transferCompleted(request);
+                        }
                     }
                 });
 
@@ -533,6 +541,31 @@ $(document).ready(function(){
 
     }
 
+    function setProgress(value){
+
+        var progressBar = document.getElementById('pb');
+
+        var progressText = document.getElementById('pt');
+
+        if (progressBar !== undefined) {
+
+            progressBar.style.width = value ? value + '%' : 0;
+
+        }
+        if (progressText !== undefined) {
+
+            progressText.innerText = value ? value + '%' : '';
+
+        }
+
+    }
+
+    var az = 0;
+
+    var ay = $('[data-b="1"]').length;
+
+    var ax = ay + 1;
+
     function getFormData(){
 
         var form = $('#colorImages');
@@ -540,6 +573,29 @@ $(document).ready(function(){
         var d = form.serialize();
 
         return d;
+    }
+
+    function redirectPage(){
+        window.location.href = "http://fashion.localhost:9000/My-Products/All";
+    }
+
+    function transferCompleted(data) {
+
+        if (az == ax){
+
+            data.addEventListener('readystatechange', function(){
+                if (this.readyState === 4) {
+                    if(this.status === 200){
+                        sweetAlert("Congratulations", "Your product has been added successfully. you'll be redirected automatically", "success");
+
+                        setTimeout(redirectPage(), 15000);
+                    }
+                }
+            });
+
+        }
+        az++;
+
     }
 
     

@@ -53,8 +53,11 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'auth.fash' => \App\Http\Middleware\AuthForFashion::class,
         'owns.shop.away' => \App\Http\Middleware\RedirectAwayIfOwnsShop::class,
         'owns.shop.to' => \App\Http\Middleware\RedirectToIfOwnsShop::class,
         'not.shop.own' => \App\Http\Middleware\NotShopOwner::class,
+        'not.product.own' => \App\Http\Middleware\NotProductOwner::class,
+        'product.own' => \App\Http\Middleware\RedirectIfProductOwner::class,
     ];
 }

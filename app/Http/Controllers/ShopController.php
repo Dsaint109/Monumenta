@@ -89,10 +89,22 @@ class ShopController extends Controller
             {
 
 
+                $count = Shop::where('name', $request->name)->count();
+
+                if($count)
+                {
+                    $slug = str_slug($request->name, '-') . '-' . $count;
+                }else
+                {
+                    $slug = str_slug($request->name, '-');
+                }
+
                 //Creating  the shop
                 $shop = Shop::where('user_id', $request->user()->id)->first();
 
                 $shop->name = $request->name;
+
+                $shop->slug = $slug;
 
                 $shop->tagline = $request->tagline;
 

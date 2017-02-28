@@ -5,7 +5,7 @@
         <div class="sliderfig">
             <ul id="flexiselDemo1">
 
-                @foreach($shops as $shop)
+                @foreach($shops->take(10) as $shop)
                     <li>
                         @if($shop->image_url)
                             <img src="{{ $shop->image_url }}" alt="{{ $shop->name }}" class="img-responsive" />

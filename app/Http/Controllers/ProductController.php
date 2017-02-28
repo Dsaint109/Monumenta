@@ -51,7 +51,7 @@ class ProductController extends Controller
 
             if($count)
             {
-                $slug = str_slug($request->name, '-') . '-' . $count;
+                $slug = str_slug($request->name, '-') . '-' . $count . str_random(2);
 
             }else
             {
@@ -240,7 +240,7 @@ class ProductController extends Controller
 
                 $product = Product::find($option->product_id);
 
-                $filename = $product->slug . '_' . $option->id . '_' . $optionValue->id. '.' . $image->getClientOriginalExtension();
+                $filename = time() . '_' . $product->slug . '_' . str_random(20) . '.' . $image->getClientOriginalExtension();
 
 
                 $img = Image::make($image);
@@ -275,5 +275,210 @@ class ProductController extends Controller
         }
 
     }
+
+
+    public function postEditProduct(Request $request, Product $product)
+    {
+
+        $this->validate($request, [
+            'name' => 'required',
+            'color' => 'required',
+            'description' => 'required|max:500',
+            'stock' => 'required',
+            'price' => 'required'
+        ]);
+
+        try
+        {
+
+            $count = Product::where('name', $request->name)->count();
+
+            if($count)
+            {
+                $slug = str_slug($request->name, '-') . '-' . $count . str_random(2);
+
+            }else
+            {
+                $slug = str_slug($request->name, '-');
+            }
+
+            $product->name = $request->name;
+
+            $product->slug = $slug;
+
+            $product->description = $request->description;
+
+            $product->price = 1 * $request->price;
+
+            if (!$request->not_price  || $request->not_price < $request->price){
+
+                $request->not_price = 1.25 * $request->price;
+
+                $product->notPrice = $request->not_price;
+
+            }else{
+
+                $product->notPrice = $request->not_price;
+
+            }
+
+            $product->stock = 1 * $request->stock;
+
+            $product->save();
+
+            $option = $product->options()->where('type', 'color')->first();
+
+            $color = $option->optionValues()->get();
+
+            $colors = explode(",",$request->color);
+
+
+
+            $i = 0;
+
+            foreach ($colors as $col)
+            {
+                if($col)
+                {
+
+                    foreach ($color as $colo)
+                    {
+
+                        if ($col == $colo->value)
+                        {
+
+                            $r[$i] = $colo->id;
+
+                        }else {
+
+                            $option_value = new OptionValue;
+                            $option_value->value = $col;
+                            $option->optionValues()->save($option_value);
+
+                            $r[$i] = $option_value->id;
+
+                        }
+
+
+                    }
+
+                    $i++;
+                }
+
+            }
+
+
+            if($request->tags){
+
+                $product->tags()->delete();
+
+                $tags = explode(",", $request->tags);
+
+                foreach ($tags as $t){
+
+                    $tag = new Tag;
+
+                    $tag->name = $t;
+
+                    $product->tags()->save($tag);
+
+                }
+
+            }
+
+
+            if($request->option_names){
+
+                $op = $product->options()->where('type', 'checkbox')->orwhere('type', 'select')->get();
+
+                foreach ($op as $o){
+                    $o->optionValues()->delete();
+                    $o->delete();
+                }
+
+
+                $o = explode(",", $request->option_names);
+
+                foreach($o as $op){
+
+                    $opt = explode("*-*", $op);
+
+                    $z = sizeof($opt);
+
+                    $options = new Option;
+
+                    for ($i = 0; $i < $z; $i++){
+
+                        if ($i == 0){
+
+                            $options->name = $opt[$i];
+
+                        }elseif ($i == 1){
+
+                            if($opt[$i] == 1){
+
+                                $options->type = "checkbox";
+
+                            }elseif ($opt[$i] == 2){
+
+                                $options->type = "select";
+
+                            }
+
+                        }
+
+                    }
+
+                    $product->options()->save($options);
+
+                    $v = explode(",", $request->option_values);
+
+                    foreach($v as $va){
+
+                        $val = explode("*_*", $va);
+
+                        $y = sizeof($val);
+
+                        $option_value =  new OptionValue;
+
+                        for ($i = 0; $i < $y; $i++){
+
+                            if ($i == 0){
+
+                                $option_value->value = $val[$i];
+
+                            }elseif($i == 1){
+
+                                if($val[$i] == $options->name){
+
+                                    $options->optionValues()->save($option_value);
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+
+
+
+                }
+
+
+            }
+
+
+            return response($r, 200);
+
+
+        }catch(\Exception $e)
+        {
+            return response($e, 422);
+        }
+
+    }
+
 
 }

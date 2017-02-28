@@ -769,20 +769,26 @@ ul.multi-column-dropdown h6 {
     position: relative;
     overflow: hidden;
 }
+.paoss{
+    display: none;
+}
 .pt{
     position: relative;
     left: 0;
     margin-left: 10px;
-    margin-top: 4px;
+    margin-top: 7px;
 }
 .pb{
-    width: 100%;
+    width: 2%;
     height: 100%;
     position: absolute;
     left: 0;
     top:0;
     background-color: rgba(173, 20, 87, 0.71);
     border-radius: 30px;
+    transition: width 0.5s linear;
+    -webkit-transition: width 0.5s linear;
+    -moz-transition: width 0.5s linear;
 }
 .color-span{
     width: 25px;

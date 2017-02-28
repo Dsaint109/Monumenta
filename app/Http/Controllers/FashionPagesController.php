@@ -44,16 +44,15 @@ class FashionPagesController extends Controller
 
         $shops = $this->shops;
 
-
-
         $shops->load('user');
 
-        $categories->load('products');
+        $categories->load('products.optionValues');
+
 
 
 
         //form an array of it
-        $with = ['categories' => $categories, 'shops' => $shops, 'route' => $currentRoute];
+        $with = ['categories' => $categories, 'shops' => $shops, 'route' => $currentRoute ];
 
 
         //endregion
@@ -242,8 +241,147 @@ class FashionPagesController extends Controller
         return view('Fashion.pages.add-products', $with);
 
     }
-    
-    
+
+
+    public function getEditProduct(Request $request, Product $product)
+    {
+
+        //region some dependencies needed by all pages
+
+        $currentRoute = Route::currentRouteName();
+
+        $categories = $this->categories;
+
+        $shops = $this->shops;
+
+        $shop = $shops->where('user_id', $request->user()->id)->first();
+
+
+        $shop->load('user');
+
+        $product->load([
+            'tags' => function($query){
+                $query->pluck('name');
+            }, 'reviews']);
+
+        $colors = $product->options()->where('type', 'color')->first()->optionValues->all();
+
+        $i = 0;
+        foreach ($colors as $color)
+        {
+            $picture[$i] = $color->pictures()->get();
+            $i++;
+        }
+
+        $opt = $product->options()->where('type', 'checkbox')->orwhere('type', 'select')->get()->take(2);
+
+        $opt->load('optionValues');
+
+        //form an array of it
+        $with = [
+                'categories' => $categories,
+                'shops' => $shops,
+                'shop' => $shop,
+                'route' => $currentRoute,
+                'product' => $product,
+                'colors' => $colors,
+                'pictures' => $picture,
+                'opt' => $opt
+                ];
+
+
+        //endregion
+
+
+        return view('Fashion.pages.edit-product', $with);
+
+    }
+
+
+    public function getAllProducts(Request $request)
+    {
+
+        //region some dependencies needed by all pages
+
+        $currentRoute = Route::currentRouteName();
+
+        $categories = $this->categories;
+
+        $shops = $this->shops;
+
+        $shop = $shops->where('user_id', $request->user()->id)->first();
+
+        $shop->load('user', 'products.tags');
+
+        $products = $shop->products()->latest('created_at')->paginate(9);
+
+        $products->load('optionValues.pictures');
+
+        $categories->load('products');
+
+
+
+        //form an array of it
+        $with = ['categories' => $categories, 'shops' => $shops,  'shop' => $shop, 'route' => $currentRoute, 'products' => $products];
+
+
+        //endregion
+
+        if ($request->ajax()) {
+            return view('Fashion.products.load', ['products' => $products])->render();
+        }
+
+        return view('Fashion.pages.my-products', $with);
+
+    }
+
+    public function getAllCategory(Request $request, $category)
+    {
+
+        //region some dependencies needed by all pages
+
+        $currentRoute = Route::currentRouteName();
+
+        $categories = $this->categories;
+
+        $shops = $this->shops;
+
+        $category = $categories->where('name', $category)->first();
+
+        if ($category)
+        {
+
+            $category->load('products.tags');
+
+            $products = $category->products()->latest('created_at')->paginate(9);
+
+            $products->load('optionValues.pictures');
+
+
+
+            //form an array of it
+            $with = ['categories' => $categories, 'category' => $category, 'shops' => $shops, 'route' => $currentRoute, 'products' => $products];
+
+
+            //endregion
+
+            if ($request->ajax()) {
+                return view('Fashion.products.category-load', ['products' => $products])->render();
+            }
+
+            return view('Fashion.pages.category-products', $with);
+
+
+        }else{
+
+            Flashy::error('Sorry something is wrong.');
+            return redirect()->route('fashion-home');
+
+        }
+
+
+    }
+
 
 
 }

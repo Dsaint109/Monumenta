@@ -18,7 +18,7 @@
                     @else
                         <li><a href="{{ route('shop-dashboard') }}"><i class="fa fa-cogs"></i>&nbsp;&nbsp;&nbsp; Dashboard</a></li>
                         <li><a href="{{ route('shop-add-products') }}"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp; Add Products</a></li>
-                        <li><a href="{{-- route('shop-dashboard') --}}"><i class="fa fa-cart-arrow-down"></i>&nbsp;&nbsp;&nbsp; My Products</a></li>
+                        <li><a href="{{ route('shop-my-products') }}"><i class="fa fa-cart-arrow-down"></i>&nbsp;&nbsp;&nbsp; My Products</a></li>
                         <li><a href="{{-- route('shop-notifications') --}}"><i class="fa fa-bell"></i>&nbsp;&nbsp;&nbsp; Notifications </a></li>
                         <li><a href="{{-- route('deal-create') --}}"><i class="fa fa-shopping-bag"></i>&nbsp;&nbsp;&nbsp; Create Deals </a></li>
 

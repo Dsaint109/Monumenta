@@ -207,20 +207,35 @@ Route::group(['domain' => 'fashion.localhost'], function () {
         'as' => 'fashion-contact-us'
     ]);
 
+    Route::get('/Category/{category}', [
+        'uses' => 'FashionPagesController@getAllCategory'
+    ]);
+
     Route::get('/Sell', [
         'uses' => 'FashionPagesController@getSell',
         'as' => 'fashion-sell'
-    ])->middleware('auth', 'owns.shop.away');
+    ])->middleware('auth.fash', 'owns.shop.away');
 
     Route::get('/Dashboard', [
         'uses' => 'FashionPagesController@getDashboard',
         'as' => 'shop-dashboard'
-    ])->middleware('auth', 'owns.shop.to');
+    ])->middleware('auth.fash', 'owns.shop.to');
 
     Route::get('/My-Products/Add', [
         'uses' => 'FashionPagesController@getAddProducts',
         'as' => 'shop-add-products'
-    ])->middleware('auth', 'owns.shop.to');
+    ])->middleware('auth.fash', 'owns.shop.to');
+
+    Route::get('/My-Products/All', [
+        'uses' => 'FashionPagesController@getAllProducts',
+        'as' => 'shop-my-products'
+    ])->middleware('auth.fash', 'owns.shop.to');
+
+
+    Route::get('/My-Products/{product}', [
+        'uses' => 'FashionPagesController@getEditProduct',
+        'as' => 'shop-edit-product'
+    ])->middleware('auth.fash', 'owns.shop.to', 'product.own');
 
 
 
@@ -229,7 +244,7 @@ Route::group(['domain' => 'fashion.localhost'], function () {
 
     Route::get('/Fdwa2KT3hLnVzFwzlzEauNUz8xdM38XTOlxR1sPL2b8XDqHALRxlTom9TPGk', [
         'uses' => 'ShopController@getRemoveImage'
-    ])->middleware('auth', 'owns.shop.to');
+    ])->middleware('auth.fash', 'owns.shop.to');
 
 
 
@@ -261,6 +276,10 @@ Route::group(['domain' => 'fashion.localhost'], function () {
     Route::post('/Products/{shop}/Add', [
         'uses' => 'ProductController@postAddProducts'
     ])->middleware('not.shop.own');
+
+    Route::post('/Product/{product}/Edit', [
+        'uses' => 'ProductController@postEditProduct'
+    ])->middleware('not.product.own');
 
     Route::post('/My-Products/Add/{optionValue}', [
         'uses' => 'ProductController@postAddColor'

@@ -34,7 +34,7 @@
         <div class="container">
             <ul>
                 <li><a href="{{ route('fashion-home') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a> <i>/</i></li>
-                <li><a href="{{-- route('shop-my-products') --}}">My Products</a> <i>/</i></li>
+                <li><a href="{{ route('shop-my-products') }}">My Products</a> <i>/</i></li>
                 <li>Add</li>
             </ul>
         </div>
@@ -88,7 +88,7 @@
                     <h3 style="color: #ad1457">Select a Category : </h3>
                 </div>
                 <div class="col-md-7">
-                    <select id="category" title="Select a Category" style="width: 80%">
+                    <select id="category" class="select_item" title="Select a Category" style="width: 80%">
                         <option disabled selected>Select a Category</option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}"> {{ $category->name }}</option>
@@ -250,11 +250,11 @@
 
         </div>
 
-        <div class="col-xs-8 col-xs-offset-4">
+        <div class="col-xs-8 col-xs-offset-4 paoss">
             <div class="row">
-                <div class="col-xs-4">oapsmas.png</div>
+                <div class="col-xs-4">Uploading pictures</div>
                 <div class="col-xs-8 progress-contain">
-                    <div class="pb"><h4 class="pt"></h4></div>
+                    <div class="pb" id="pb"><h4 class="pt" id="pt"></h4></div>
                 </div>
             </div>
         </div>

@@ -4,179 +4,40 @@
         <h3>New Products</h3>
             <ul id="flexiselNewProducts">
 
+                @foreach($categories as $category)
+                @foreach($category->products->take(3) as $product)
+
                 <li>
                     <div class="w3l_related_products_grid">
                         <div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
                             <div class="hs-wrapper hs-wrapper1">
-                                <img src="images/Fashion/27.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/28.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/29.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/30.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/27.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/28.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/29.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/30.jpg" alt=" " class="img-responsive" />
+
+                                @foreach($product->optionValues as $prov)
+                                    @if($prov->pictures)
+                                        @foreach($prov->pictures->take(10) as $pic)
+                                            <img src="{{ $pic->image_url }}" alt="{{ $product->name }}" class="img-responsive" />
+                                        @endforeach
+                                    @endif
+                                @endforeach
                                 <div class="w3_hs_bottom w3_hs_bottom_sub">
                                     <ul>
                                         <li style="float: none">
-                                            <a href="#" data-toggle="modal" data-target="#myModal6"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                            <a href="#" data-toggle="modal" data-target="#myModal{{ $product->id }}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            <h5><a href="single.html">Skirts</a></h5>
+                            <h5><a href="/{{ $product->slug }}">{{ $product->name }}</a></h5>
                             <div class="simpleCart_shelfItem">
-                                <p><span>$320</span> <i class="item_price">$250</i></p>
+                                <p><img src="/images/naira.svg" alt="Naira" height="15px"><span>{{ $product->notPrice }}</span> <i class="item_price"><img src="/images/naira.svg" alt="Naira" height="15px">{{ $product->price }}</i></p>
                                 <p><a class="item_add" href="#">Add to cart</a></p>
                             </div>
                         </div>
                     </div>
                 </li>
 
-                <li>
-                <div class="w3l_related_products_grid">
-                    <div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
-                        <div class="hs-wrapper hs-wrapper1">
-                            <img src="images/Fashion/31.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/32.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/33.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/34.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/31.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/32.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/33.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/34.jpg" alt=" " class="img-responsive" />
-                            <div class="w3_hs_bottom w3_hs_bottom_sub">
-                                <ul>
-                                    <li style="float: none">
-                                        <a href="#" data-toggle="modal" data-target="#myModal5"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <h5><a href="single.html">Jackets</a></h5>
-                        <div class="simpleCart_shelfItem">
-                            <p><span>$320</span> <i class="item_price">$250</i></p>
-                            <p><a class="item_add" href="#">Add to cart</a></p>
-                        </div>
-                    </div>
-                </div>
-                </li>
-
-                <li>
-                <div class="w3l_related_products_grid">
-                    <div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
-                        <div class="hs-wrapper hs-wrapper1">
-                            <img src="images/Fashion/37.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/30.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/36.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/38.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/37.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/30.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/36.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/38.jpg" alt=" " class="img-responsive" />
-                            <div class="w3_hs_bottom w3_hs_bottom_sub">
-                                <ul>
-                                    <li style="float: none">
-                                        <a href="#" data-toggle="modal" data-target="#myModal6"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <h5><a href="single.html">Dresses</a></h5>
-                        <div class="simpleCart_shelfItem">
-                            <p><span>$320</span> <i class="item_price">$250</i></p>
-                            <p><a class="item_add" href="#">Add to cart</a></p>
-                        </div>
-                    </div>
-                </div>
-                </li>
-
-                <li>
-                <div class="w3l_related_products_grid">
-                    <div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
-                        <div class="hs-wrapper hs-wrapper1">
-                            <img src="images/Fashion/40.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/41.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/42.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/43.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/40.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/41.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/42.jpg" alt=" " class="img-responsive" />
-                            <img src="images/Fashion/43.jpg" alt=" " class="img-responsive" />
-                            <div class="w3_hs_bottom w3_hs_bottom_sub">
-                                <ul>
-                                    <li style="float: none">
-                                        <a href="#" data-toggle="modal" data-target="#myModal1"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <h5><a href="single.html">Jeans</a></h5>
-                        <div class="simpleCart_shelfItem">
-                            <p><span>$320</span> <i class="item_price">$250</i></p>
-                            <p><a class="item_add" href="#">Add to cart</a></p>
-                        </div>
-                    </div>
-                </div>
-                </li>
-
-                <li>
-                    <div class="w3l_related_products_grid">
-                        <div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
-                            <div class="hs-wrapper hs-wrapper1">
-                                <img src="images/Fashion/31.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/32.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/33.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/34.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/31.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/32.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/33.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/34.jpg" alt=" " class="img-responsive" />
-                                <div class="w3_hs_bottom w3_hs_bottom_sub">
-                                    <ul>
-                                        <li style="float: none">
-                                            <a href="#" data-toggle="modal" data-target="#myModal5"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <h5><a href="single.html">Jackets</a></h5>
-                            <div class="simpleCart_shelfItem">
-                                <p><span>$320</span> <i class="item_price">$250</i></p>
-                                <p><a class="item_add" href="#">Add to cart</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="w3l_related_products_grid">
-                        <div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
-                            <div class="hs-wrapper hs-wrapper1">
-                                <img src="images/Fashion/37.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/30.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/36.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/38.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/37.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/30.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/36.jpg" alt=" " class="img-responsive" />
-                                <img src="images/Fashion/38.jpg" alt=" " class="img-responsive" />
-                                <div class="w3_hs_bottom w3_hs_bottom_sub">
-                                    <ul>
-                                        <li style="float: none">
-                                            <a href="#" data-toggle="modal" data-target="#myModal6"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <h5><a href="single.html">Dresses</a></h5>
-                            <div class="simpleCart_shelfItem">
-                                <p><span>$320</span> <i class="item_price">$250</i></p>
-                                <p><a class="item_add" href="#">Add to cart</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+                @endforeach
+                @endforeach
 
             </ul>
 

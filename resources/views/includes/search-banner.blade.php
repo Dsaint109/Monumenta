@@ -1,7 +1,7 @@
 <div class="main-banner banner text-center">
     <div class="container animated bounceInUp dg" >
         <div class="banner-info">
-            <h3>We connect you to the world. </h3>
+            <h3>A Monument Of African Culture.</h3>
             <div class="search-form">
                 <form action="#" method="post">
                     <input type="text" placeholder="Discover..." name="search" id="search" onclick="activeSearchOpen()" onkeydown="activeSearchOpen()" autocomplete="off">
