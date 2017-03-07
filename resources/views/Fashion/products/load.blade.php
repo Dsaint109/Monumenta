@@ -38,7 +38,7 @@
                         </ul>
                     </div>
                 </div>
-                <h5><a href="single.html">{{ $product->name }}</a></h5>
+                <h5><a href="/{{ $product->slug }}">{{ $product->name }}</a></h5>
                 <div class="simpleCart_shelfItem">
                     <p><img src="/images/naira.svg" alt="Naira" height="15px"><span>{{ $product->notPrice }}</span> <i class="item_price"><img src="/images/naira.svg" alt="Naira" height="15px">{{ $product->price }}</i></p>
                     <p><a class="delete_pr" href="#"><i class="fa fa-trash-o"></i></a> <a class="edit_pr" href="/My-Products/{{ $product->id }}"><i class="fa fa-pencil"></i></a></p>

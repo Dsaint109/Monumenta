@@ -341,27 +341,11 @@ class ProductController extends Controller
                 if($col)
                 {
 
-                    foreach ($color as $colo)
-                    {
+                    $option_value = new OptionValue;
+                    $option_value->value = $col;
+                    $option->optionValues()->save($option_value);
 
-                        if ($col == $colo->value)
-                        {
-
-                            $r[$i] = $colo->id;
-
-                        }else {
-
-                            $option_value = new OptionValue;
-                            $option_value->value = $col;
-                            $option->optionValues()->save($option_value);
-
-                            $r[$i] = $option_value->id;
-
-                        }
-
-
-                    }
-
+                    $r[$i] = $option_value->id;
                     $i++;
                 }
 

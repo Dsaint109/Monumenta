@@ -11,8 +11,8 @@
             <script src="{{ URL::to('Fashion/js/jquery.magnific-popup.js')  }}" type="text/javascript"></script>
             <!--//pop-up-box -->
             <div id="small-dialog" class="mfp-hide">
-                <iframe src="https://player.vimeo.com/video/23259282?title=0&byline=0&portrait=0"></iframe>
-            </div>
+                <iframe src="https://player.vimeo.com/video/126132667?title=0&byline=0&portrait=0"></iframe>
+               </div>
             <script>
                 $(document).ready(function() {
                     $('.popup-with-zoom-anim').magnificPopup({

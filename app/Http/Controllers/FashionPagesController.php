@@ -335,6 +335,7 @@ class FashionPagesController extends Controller
 
     }
 
+
     public function getAllCategory(Request $request, $category)
     {
 
@@ -378,6 +379,64 @@ class FashionPagesController extends Controller
             return redirect()->route('fashion-home');
 
         }
+
+
+    }
+
+
+    public function getProduct($product)
+    {
+
+        $product = Product::where('slug', $product)->first();
+
+
+        if ($product)
+        {
+            $currentRoute = Route::currentRouteName();
+
+            $categories = $this->categories;
+
+            $shops = $this->shops;
+
+            $shop = $product->shop()->first();
+
+            $product->load([
+                'tags' => function($query){
+                    $query->pluck('name');
+                }, 'reviews']);
+
+            $colors = $product->optionValues()->where('value', 'like', '#%')->get();
+
+            $color = $product->optionValues()->where('value', 'like', '#%')->first();
+
+            $color->load('pictures');
+
+
+
+            $opt = $product->options()->where('type', 'checkbox')->orwhere('type', 'select')->get()->take(2);
+
+            $opt->load('optionValues');
+
+            //form an array of it
+            $with = [
+                'categories' => $categories,
+                'shops' => $shops,
+                'shop' => $shop,
+                'route' => $currentRoute,
+                'product' => $product,
+                'colors' => $colors,
+                'color' => $color,
+                'opt' => $opt
+            ];
+
+            return view('Fashion.pages.single-product', $with);
+
+
+        }else{
+
+            return abort(404);
+        }
+
 
 
     }

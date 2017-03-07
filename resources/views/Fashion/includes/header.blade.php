@@ -94,9 +94,9 @@
 
                                         @foreach($categories as $category)
                                             @if($loop->first || $loop->last)
-                                                <li><a href="Category/{{ $category->name }}">{{ $category->name }}<span>New</span></a></li>
+                                                <li><a href="/Category/{{ $category->name }}">{{ $category->name }}<span>New</span></a></li>
                                             @else
-                                                <li><a href="Category/{{ $category->name }}">{{ $category->name }}</a></li>
+                                                <li><a href="/Category/{{ $category->name }}">{{ $category->name }}</a></li>
                                             @endif
                                         @endforeach
 
@@ -105,10 +105,10 @@
                                 <div class="col-sm-3">
                                     <ul class="multi-column-dropdown">
                                         <h6>Deals for you</h6>
-                                        <li><a href="Featured/Products">Featured</a></li>
-                                        <li><a href="Deals/Sales">Sales<span>New</span></a></li>
+                                        <li><a href="/Featured/Products">Featured</a></li>
+                                        <li><a href="/Deals/Sales">Sales<span>New</span></a></li>
                                         @if($shops->where('featured', 1)->first())
-                                        <li><a href="Shops/{{ $shops->where('featured', 1)->first()->slug }}"><i>{{ $shops->where('featured', 1)->first()->name }}</i></a></li>
+                                        <li><a href="/Shops/{{ $shops->where('featured', 1)->first()->slug }}"><i>{{ $shops->where('featured', 1)->first()->name }}</i></a></li>
                                         @endif
                                     </ul>
                                 </div>

@@ -231,11 +231,14 @@ Route::group(['domain' => 'fashion.localhost'], function () {
         'as' => 'shop-my-products'
     ])->middleware('auth.fash', 'owns.shop.to');
 
-
     Route::get('/My-Products/{product}', [
         'uses' => 'FashionPagesController@getEditProduct',
         'as' => 'shop-edit-product'
     ])->middleware('auth.fash', 'owns.shop.to', 'product.own');
+
+    Route::get('/{product}', [
+        'uses' => 'FashionPagesController@getProduct'
+    ]);
 
 
 

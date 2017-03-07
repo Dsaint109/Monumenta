@@ -47,7 +47,7 @@
                                         <div class="panel-body panel_text">
                                             <ul>
                                                 @foreach($categories as $category)
-                                                <li><a href="">{{ $category->name }}</a></li>
+                                                <li><a href="/Category/{{ $category->name }}">{{ $category->name }}</a></li>
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -149,6 +149,7 @@
                             @foreach($product->optionValues()->get() as $prov)
                                 @if($prov->pictures()->first())
                             <img src="{{ $prov->pictures()->first()->image_url }}" alt=" " class="img-responsive" />
+                                    @break
                                 @endif
                             @endforeach
 

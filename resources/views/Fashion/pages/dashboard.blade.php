@@ -178,7 +178,7 @@
             <p>
                 You can Add products from here or by clicking on on your <button id="toAvatar">avatar</button> at the top of the page
             </p>
-            <a href="">Start Now</a>
+            <a href="{{ route('shop-add-products') }}">Start Now</a>
         </div>
     </div>
 

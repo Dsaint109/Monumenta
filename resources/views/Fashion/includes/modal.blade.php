@@ -50,11 +50,30 @@
                                 <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
                                     <div class="facts">
                                         <div class="register">
-                                            <form action="#" method="post">
-                                                <input placeholder="Name" name="Name" type="text" required="">
-                                                <input placeholder="Email Address" name="Email" type="email" required="">
-                                                <input placeholder="Password" name="Password" type="password" required="">
-                                                <input placeholder="Confirm Password" name="Password" type="password" required="">
+                                            <form action="{{ route('postSignup') }}" method="post">
+                                                {{ csrf_field() }}
+                                                @if(count($errors))
+                                                    {{ $errors->first('Firstname') }}
+                                                @endif
+                                                <input placeholder="First Name" name="Firstname" type="text" value="{{ old('Firstname') }}" required>
+                                                @if(count($errors))
+                                                    {{ $errors->first('Lastname') }}
+                                                @endif
+                                                    <br><br>
+                                                <input placeholder="Last Name" name="Lastname" type="text" value="{{ old('Lastname') }}" required>
+                                                    @if(count($errors))
+                                                        {{ $errors->first('email') }}
+                                                    @endif
+                                                <input placeholder="Email Address" name="email" type="email" value="{{ old('email') }}" required>
+                                                    @if(count($errors))
+                                                        {{ $errors->first('password') }}
+                                                    @endif
+                                                <input placeholder="Password" name="password" type="password" required>
+
+                                                <input placeholder="Confirm Password" name="password_again" type="password" required>
+
+                                                <input type="hidden" name="_redirect" value="fashion-home">
+
                                                 <div class="sign-up">
                                                     <input type="submit" value="Create Account"/>
                                                 </div>
@@ -98,8 +117,37 @@
         </div>
     </div>
 </div>
+<script src="{{ URL::to('js/jquery.validate.min.js')  }}"></script>
 <script>
     $('#myModal88').modal('show');
+</script>
+<script type="text/javascript">
+    $("#signupForm").validate({
+        rules: {
+            password: {
+                required: true,
+                minlength: 5
+            },
+            password_again: {
+                required: true,
+                equalTo: "#password",
+                minlength: 5
+            }
+        },
+        messages: {
+            Firstname: "Please enter your First Name",
+            Lastname: "Please enter your Last Name",
+            password: {
+                required: "You must input a Password",
+                minlength: "Your Password must be at least 5 characters long"
+            },
+            password_again: {
+                required: "You must confirm a Password",
+                equalTo: "Password Mismatch",
+                minlength: "Your Password must be at least 5 characters long"
+            }
+        }
+    });
 </script>
 <!-- //User ish -->
 @endif

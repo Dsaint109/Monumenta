@@ -2075,6 +2075,7 @@ h2.typoh2{
 @media (max-width:480px){
 	.banner {
 		min-height: 405px;
+        background: url(../../images/Fashion/b1-2.jpg) no-repeat -200px 0px;
 	}
 	.table h1 {
 		font-size: 26px;

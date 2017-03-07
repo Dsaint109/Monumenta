@@ -216,26 +216,16 @@
                     @foreach($opt as $op)
                         @if($op->type == 'checkbox')
                         <div class="occasional occasional-multiple" data-occasional-multiple="{{ $loop->index }}">
-                            <h4>OPTION NAME : <input type="text" data-occasional-name="1" data-for-me="{{ $loop->index }}" data-occasional-type="1" value="e.g. SIZE" autofocus style="width: 50%;"><i class="fa fa-pencil-square-o" data-togle="tooltip" data-placement="bottom" title="edit"></i></h4>
+                            <h4>OPTION NAME : <input type="text" data-occasional-name="1" data-for-me="{{ $loop->index }}" data-occasional-type="1" value="{{ $op->name }}" autofocus style="width: 50%;"><i class="fa fa-pencil-square-o" data-togle="tooltip" data-placement="bottom" title="edit"></i></h4>
                             <h4> OPTION VALUE : </h4>
-                            <div class="colr ert">
-                                <div class="check">
-                                    <label class="checkbox"><input type="checkbox" name="checkbox[{{ $loop->index }}]" value="" checked=""><i> </i><span data-multipled-label="0">SMALL</span></label>
-                                    <input type="text" data-has-auto-replace="1" data-multipled-for="0" data-value="1" data-value-for="{{ $loop->index }}" data-value-for-type="1" value="SMALL"><i class="fa fa-pencil-square-o"  title="edit"></i>
-                                </div>
-                            </div>
+                            @foreach($op->optionvalues as $o)
                             <div class="colr">
                                 <div class="check">
-                                    <label class="checkbox"><input type="checkbox" name="checkbox[{{ $loop->index }}]"><i> </i><span data-multipled-label="1">MEDIUM</span></label>
-                                    <input type="text" data-has-auto-replace="1" data-multipled-for="1" data-value="1" data-value-for="{{ $loop->index }}" data-value-for-type="1" value="MEDIUM"><i class="fa fa-pencil-square-o" title="edit"></i>'
+                                    <label class="checkbox"><input type="checkbox" name="checkbox[{{ $loop->parent->index }}]" value=""><i> </i><span data-multipled-label="{{ $loop->index }}">{{ $o->value }}</span></label>
+                                    <input type="text" data-has-auto-replace="1" data-multipled-for="{{ $loop->index }}" data-value="1" data-value-for="{{ $loop->parent->index }}" data-value-for-type="1" value="{{ $o->value }}"><i class="fa fa-pencil-square-o"  title="edit"></i>
                                 </div>
                             </div>
-                            <div class="colr">
-                                <div class="check">
-                                    <label class="checkbox"><input type="checkbox" name="checkbox[{{ $loop->index }}]"><i> </i><span data-multipled-label="2">LARGE</span></label>
-                                    <input type="text" data-has-auto-replace="1" data-multipled-for="2" data-value="1" data-value-for="{{ $loop->index }}" data-value-for-type="1" value="LARGE"><i class="fa fa-pencil-square-o" title="edit"></i>
-                                </div>
-                            </div>
+                            @endforeach
                             <div class="colr">
                                 <div class="check">
                                     <label class="more-multiple-optionvalues"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp; More Option Values</label>
@@ -245,28 +235,17 @@
                         </div>
                         @elseif($op->type == 'select')
                             <div class="occasional occasional-selectable">
-                                <h4>OPTION NAME : <input type="text" data-occasional-name="1" data-for-me="{{ $loop->index }}" data-occasional-type="2" value="e.g SHIRT DETAILS" style="width: 50%"><i class="fa fa-pencil-square-o" data-togle="tooltip" data-placement="bottom" title="edit"></i></h4>
+                                <h4>OPTION NAME : <input type="text" data-occasional-name="1" data-for-me="{{ $loop->index }}" data-occasional-type="2" value="{{ $op->name }}" style="width: 50%"><i class="fa fa-pencil-square-o" data-togle="tooltip" data-placement="bottom" title="edit"></i></h4>
                                 <h4> OPTION VALUE : </h4>
                                 <ul>
+                                    @foreach($op->optionValues as $o)
                                     <li>
-                                        <input type="radio" id="f-option[0]" name="selector[{{ $loop->index }}]" checked>
-                                        <label data-selected-label="0" for="f-option[0]">Long Sleeves</label>
-                                        <input  data-has-auto-replace="1" type="text" data-selected-for="0" data-value="1" data-value-for="{{ $loop->index }}" data-value-for-type="2" name="" value="Long Sleeves"><i class="fa fa-pencil-square-o"  title="edit"></i>
+                                        <input type="radio" id="f-option[{{ $loop->index }}]" name="selector[{{ $loop->parent->index }}]">
+                                        <label data-selected-label="{{ $loop->index }}" for="f-option[{{ $loop->index }}]">{{ $o->value }}</label>
+                                        <input  data-has-auto-replace="1" type="text" data-selected-for="{{ $loop->index }}" data-value="1" data-value-for="{{ $loop->parent->index }}" data-value-for-type="2" name="" value="{{ $o->value }}"><i class="fa fa-pencil-square-o"  title="edit"></i>
                                         <div class="check"></div>
                                     </li>
-                                    <li>
-                                        <input type="radio" id="s-option[0]" name="selector[{{ $loop->index }}]">
-                                        <label data-selected-label="1" for="s-option[0]">Short Sleeve</label>
-                                        <input data-has-auto-replace="1" data-selected-for="1" data-value="1" data-value-for="{{ $loop->index }}" data-value-for-type="2" type="text" name="" value="Short Sleeves"><i class="fa fa-pencil-square-o"  title="edit"></i>
-                                        <div class="check"><div class="inside"></div></div>
-                                    </li>
-                                    <li>
-                                        <input type="radio" id="t-option[0]" name="selector[{{ $loop->index }}]">
-                                        <label data-selected-label="2" for="t-option[0]">Sleeveless</label>
-                                        <input data-has-auto-replace="1" data-selected-for="2" data-value="1" data-value-for="{{ $loop->index }}" data-value-for-type="2" type="text" name="" value="Sleeveless"><i class="fa fa-pencil-square-o"  title="edit"></i>
-                                        <div class="check"><div class="inside"></div></div>
-                                        </li>
-                                    </ul>
+                                    @endforeach
                                 <div class="colr">
                                     <div class="check">
                                         <label class="more-multiple-optionvalues"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp; More Option Values</label>
@@ -278,7 +257,6 @@
                     @endforeach
 
                 </div>
-
 
                 <div class="occasional  occasional-creator">
                     <h5><i class="fa fa-plus"></i> Add Options <span style="font-family: 'Open Sans', sans-serif; font-size: 12px; font-weight: bold">(E.G. SIZE)</span></h5>
@@ -322,9 +300,6 @@
         </div>
     </div>
 
-    @foreach($colors as $color)
-    <input type="hidden" name="_color" value="{{ $color->value }}">
-    @endforeach
 
 
     <script type="text/javascript" src="{{ URL::to('Fashion/js/materialize-tags.js') }}"></script>

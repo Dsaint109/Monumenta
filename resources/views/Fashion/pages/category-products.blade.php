@@ -1,7 +1,7 @@
 @extends('layouts.fashion-master')
 
 @section('title')
-    All Products - {{ $shop->name }}
+    All Products - {{ $category->name }}
 @endsection
 
 @section('banner')
@@ -13,7 +13,7 @@
         <div class="container">
             <ul>
                 <li><a href="{{ route('fashion-home') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a> <i>/</i></li>
-                <li>My Products</li>
+                <li>{{ $category->name }}</li>
             </ul>
         </div>
     </div>
@@ -46,8 +46,8 @@
                                     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                         <div class="panel-body panel_text">
                                             <ul>
-                                                @foreach($categories as $category)
-                                                    <li><a href="">{{ $category->name }}</a></li>
+                                                @foreach($categories as $cat)
+                                                    <li><a href="/Category/{{ $cat->name }}">{{ $cat->name }}</a></li>
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -79,15 +79,12 @@
 
 
 
-                            {{--
-                            <ul class="panel_bottom">
+                            {{-- <ul class="panel_bottom">
                                 <li><a href="products.html">Summer Store</a></li>
                                 <li><a href="dresses.html">New In Clothing</a></li>
                                 <li><a href="sandals.html">New In Shoes</a></li>
                                 <li><a href="products.html">Latest Watches</a></li>
-                            </ul>
-
-                            --}}
+                            </ul> --}}
 
                         </div>
 
@@ -136,7 +133,7 @@
     </div>
 
 
-    @foreach($shop->products as $product)
+    @foreach($category->products as $product)
         <div class="modal video-modal fade" id="myModal{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="myModal{{ $product->id }}">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">

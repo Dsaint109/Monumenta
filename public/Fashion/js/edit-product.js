@@ -27,8 +27,6 @@ $(document).ready(function(){
 
         getOptions();
 
-        getColors();
-
     });
 
 
@@ -145,7 +143,7 @@ $(document).ready(function(){
             }
 
         } else {
-            sweetAlert("Max amount exceeded", "You cannot have more than 4 colors! Click on a color or refresh page to remove it.", "error");
+            sweetAlert("Max amount exceeded", "You cannot have more than 5 colors! Click on a color or refresh page to remove it.", "error");
         }
 
     }
@@ -308,20 +306,6 @@ $(document).ready(function(){
     }
 
 
-    function getColors() {
-
-        var as = $('input[name=_color]');
-
-        for (var i = 0; i < as.length; i++){
-
-            var ad = as.eq(i).val();
-
-            colorArray.push(ad);
-
-        }
-
-    }
-
     function autoReplace(identifier, val) {
 
         $('[data-selected-label='+ identifier +']').html(val);
@@ -341,9 +325,7 @@ $(document).ready(function(){
 
         getChips();
 
-        getColors();
-
-        var data = "";
+        var data;
 
         var string = "_token=";
 
