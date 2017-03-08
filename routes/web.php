@@ -181,7 +181,7 @@ Route::group([], function () {
  */
 
 
-Route::group(['domain' => 'fashion.localhost'], function () {
+Route::group(['domain' => 'fashion.monumenta.biz'], function () {
 
 
 
