@@ -26,12 +26,13 @@ class CreateProductsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
+/*
             $table->foreign('shop_id')->references('id')->on('shop')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
             $table->foreign('category_id')->references('id')->on('category')
-                ->onUpdate('cascade');
+                ->onUpdate('cascade');*/
         });
     }
 
