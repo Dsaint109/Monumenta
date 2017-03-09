@@ -137,7 +137,7 @@
                     <li><a href="{{ route('fashion-sell') }}" class="@if($route == 'fashion-sell')
                                 act
                             @endif">Sell</a></li>
-                    <li><a href="{{ route('fashion-logout') }}">Back to Monumenta</a></li>
+                    <li><a href="{{ route('home') }}">Back to Monumenta</a></li>
                 </ul>
             </div>
         </nav>
