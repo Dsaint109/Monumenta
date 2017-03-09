@@ -21,7 +21,7 @@
 
 
 
-Route::group([], function () {
+Route::group(['domain' => 'monumenta.biz'], function () {
 
 
     Route::get('/', [
