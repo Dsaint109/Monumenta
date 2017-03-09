@@ -24,7 +24,7 @@ class CreateForeignKeyTwo extends Migration
             $table->foreign('shop_id')->references('id')->on('shops')
                 ->onDelete('cascade');
 
-            $table->foreign('category_id')->references('id')->on('category')
+            $table->foreign('category_id')->references('id')->on('categories')
                 ->onUpdate('cascade');
         });
 
@@ -49,11 +49,11 @@ class CreateForeignKeyTwo extends Migration
         Schema::table('product_tag', function (Blueprint $table){
 
             $table->foreign('product_id')->references('id')
-                ->on('product')
+                ->on('products')
                 ->onDelete('cascade');
 
             $table->foreign('tag_id')->references('id')
-                ->on('tag')
+                ->on('tags')
                 ->onDelete('cascade');
         });
 
