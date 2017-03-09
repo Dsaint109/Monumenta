@@ -19,12 +19,6 @@ class CreateOptionValuesTable extends Migration
             $table->string('value');
             $table->timestamps();
 
-
-            $table->foreign('option_id')->references('id')
-                  ->on('options')
-                  ->onUpdate('cascade');
-
-
         });
     }
 

@@ -23,11 +23,6 @@ class CreateDealsTable extends Migration
             $table->integer('sale_two')->unsigned()->nullable();
             $table->softDeletes();
             $table->timestamps();
-
-
-
-            $table->foreign('product_id')->references('id')
-                  ->on('products');
         });
     }
 

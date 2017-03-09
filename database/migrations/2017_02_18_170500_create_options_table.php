@@ -19,13 +19,6 @@ class CreateOptionsTable extends Migration
             $table->enum('type', ['checkbox', 'select', 'color', 'text']);
             $table->string('name');
             $table->timestamps();
-
-
-
-            $table->foreign('product_id')->references('id')
-                ->on('products')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
         });
     }
 
