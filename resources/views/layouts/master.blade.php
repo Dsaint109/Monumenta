@@ -58,11 +58,11 @@ Author URL: http://saintswebnology.com
     <!-- //js -->
 
         <!--fonts-->
-        <link href='{{ URL::to('https://fonts.googleapis.com/css?family=Ubuntu+Condensed')  }}' rel='stylesheet'
+{{--        <link href='{{ URL::to('https://fonts.googleapis.com/css?family=Ubuntu+Condensed')  }}' rel='stylesheet'
               type='text/css'>
         <link href="{{ URL::to('https://fonts.googleapis.com/css?family=Roboto:300')  }}" rel="stylesheet">
         <link href='{{ URL::to('https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic')  }}'
-              rel='stylesheet' type='text/css'>
+              rel='stylesheet' type='text/css'> --}}
         <!--//fonts-->
 
 
@@ -154,7 +154,14 @@ Author URL: http://saintswebnology.com
 </body>
 
 </html>
-
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script>
+    WebFont.load({
+        google: {
+            families: ['Ubuntu Condensed', 'Roboto:300', 'Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic']
+        }
+    });
+</script>
 <script src="{{ URL::to('js/aos.js') }}"></script>
 <script src="{{ URL::to('js/parallax.min.js') }}"></script>
 <script src="{{ URL::to('js/main.js') }}"></script>
@@ -211,7 +218,6 @@ Author URL: http://saintswebnology.com
         $('.modal-backdrop').css({'z-index': '940'});
     });
 </script>
-
 <script type="text/javascript">
     var ast = $(window).width();
     if(ast < 750){
