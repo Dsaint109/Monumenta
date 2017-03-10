@@ -192,6 +192,11 @@ Route::group(['domain' => 'fashion.monumenta.biz'], function () {
         'as' => 'fashion-home'
     ]);
 
+    Route::get('/', [
+        'uses' => 'FashionPagesController@index',
+        'as' => 'fashion-home'
+    ]);
+
     Route::get('/about',[
         'uses' => 'FashionPagesController@getAbout',
         'as' => 'fashion-about'
