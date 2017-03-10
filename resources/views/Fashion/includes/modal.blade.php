@@ -22,8 +22,8 @@
                                 <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
                                     <div class="facts">
                                         <div class="register">
-                                            <form action="monumenta.biz/Login" method="post">
-                                                {{ csrf_field() }}  
+                                            <form action="https://monumenta.biz/Login" method="post">
+                                                {{ csrf_field() }}
 
                                                 <input name="email" placeholder="Email Address" type="text" required="">
 
