@@ -101,12 +101,12 @@ Author URL: http://saintswebnology.com
 
 <!-- Source -->
 <script async src="{{ URL::to('js/modernizr.custom.js')  }}"></script>
-<script async src="{{ URL::to('js/jquery.uls.data.js')  }}"></script>
-<script async src="{{ URL::to('js/jquery.uls.data.utils.js')  }}"></script>
+<script src="{{ URL::to('js/jquery.uls.data.js')  }}"></script>
+<script src="{{ URL::to('js/jquery.uls.data.utils.js')  }}"></script>
 <script async src="{{ URL::to('js/jquery.uls.lcd.js')  }}"></script>
 <script async src="{{ URL::to('js/jquery.uls.languagefilter.js')  }}"></script>
 <script async src="{{ URL::to('js/jquery.uls.regionfilter.js')  }}"></script>
-<script async src="{{ URL::to('js/jquery.uls.core.js')  }}"></script>
+<script src="{{ URL::to('js/jquery.uls.core.js')  }}"></script>
 <script async src="{{ URL::to('js/jquery.leanModal.min.js') }}"></script>
 <script async src="{{ URL::to('js/jquery.validate.min.js')  }}"></script>
 <script async src="{{ URL::to('js/sweetalert.min.js')  }}"></script>
@@ -147,10 +147,10 @@ Author URL: http://saintswebnology.com
         }
     });
 </script>
-<script async src="{{ URL::to('js/aos.js') }}"></script>
-<script async src="{{ URL::to('js/parallax.min.js') }}"></script>
-<script async src="{{ URL::to('js/main.js') }}"></script>
-<script async type="text/javascript">
+<script src="{{ URL::to('js/aos.js') }}"></script>
+<script src="{{ URL::to('js/parallax.min.js') }}"></script>
+<script src="{{ URL::to('js/main.js') }}"></script>
+<script type="text/javascript">
     AOS.init({
         easing: 'ease-in-out-sine'
     });
