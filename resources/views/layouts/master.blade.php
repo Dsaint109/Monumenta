@@ -41,7 +41,7 @@ Author URL: http://saintswebnology.com
     <!-- //JAVASCRIPT -->
     <!-- //for-mobile-apps -->
     <!-- js -->
-    <script type="text/javascript" src="{{ URL::to('js/jquery.min.js')  }}"></script>
+    <script type="application/javascript" src="{{ URL::to('js/jquery.min.js')  }}"></script>
         <script type="text/javascript">
             //paste this code under head tag or in a seperate js file.
             // Wait for window load
@@ -52,7 +52,7 @@ Author URL: http://saintswebnology.com
         </script>
     <!-- //js -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{{ URL::to('js/bootstrap.min.js')  }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/bootstrap.min.js')  }}"></script>
     <script>
         $(document).ready(function () {
             var mySelect = $('#first-disabled2');
@@ -100,7 +100,7 @@ Author URL: http://saintswebnology.com
 <div class="se-pre-con"></div>
 
 <!-- Source -->
-<script async src="{{ URL::to('js/modernizr.custom.js')  }}"></script>
+<script async type="text/javascript" src="{{ URL::to('js/modernizr.custom.js')  }}"></script>
 <script src="{{ URL::to('js/jquery.uls.data.js')  }}"></script>
 <script src="{{ URL::to('js/jquery.uls.data.utils.js')  }}"></script>
 <script async src="{{ URL::to('js/jquery.uls.lcd.js')  }}"></script>
@@ -108,9 +108,9 @@ Author URL: http://saintswebnology.com
 <script async src="{{ URL::to('js/jquery.uls.regionfilter.js')  }}"></script>
 <script src="{{ URL::to('js/jquery.uls.core.js')  }}"></script>
 <script async src="{{ URL::to('js/jquery.leanModal.min.js') }}"></script>
-<script async src="{{ URL::to('js/jquery.validate.min.js')  }}"></script>
-<script async src="{{ URL::to('js/sweetalert.min.js')  }}"></script>
-<script src="{{ URL::to('js/bootstrap-select.js')  }}"></script>
+<script async type="text/javascript" src="{{ URL::to('js/jquery.validate.min.js')  }}"></script>
+<script async type="text/javascript" src="{{ URL::to('js/sweetalert.min.js')  }}"></script>
+<script type="text/javascript" src="{{ URL::to('js/bootstrap-select.js')  }}"></script>
 
 @include('sweet::alert')
 
@@ -147,9 +147,9 @@ Author URL: http://saintswebnology.com
         }
     });
 </script>
-<script src="{{ URL::to('js/aos.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('js/aos.js') }}"></script>
 <script src="{{ URL::to('js/parallax.min.js') }}"></script>
-<script src="{{ URL::to('js/main.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('js/main.js') }}"></script>
 <script type="text/javascript">
     AOS.init({
         easing: 'ease-in-out-sine'
