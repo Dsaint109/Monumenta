@@ -78,12 +78,12 @@
 
 <!-- swal -->
 <link href="{{ URL::to('css/sweetalert.css')  }}" rel="stylesheet" type="text/css" media="all"/>
-<script src="{{ URL::to('js/sweetalert.min.js')  }}"></script>
+<script async src="{{ URL::to('js/sweetalert.min.js')  }}"></script>
 
 
 <!--flexisel -->
 
-<script src="{{ URL::to('Fashion/js/jquery.flexisel.js')  }}"></script>
+<script async src="{{ URL::to('Fashion/js/jquery.flexisel.js')  }}"></script>
 
 @include('sweet::alert')
 <!-- //swal -->
@@ -146,7 +146,7 @@
 </body>
 
 </html>
-<script type="text/javascript" src="{{ URL::to('Fashion/js/jquery.flexisel.js') }}"></script>
+<script async type="text/javascript" src="{{ URL::to('Fashion/js/jquery.flexisel.js') }}"></script>
 <script type="text/javascript">
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
