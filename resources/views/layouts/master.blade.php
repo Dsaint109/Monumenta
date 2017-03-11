@@ -40,13 +40,8 @@ Author URL: http://saintswebnology.com
         } </script>
     <!-- //JAVASCRIPT -->
     <!-- //for-mobile-apps -->
-
-
-
     <!-- js -->
     <script type="text/javascript" src="{{ URL::to('js/jquery.min.js')  }}"></script>
-    <script src="{{ URL::to('js/modernizr.custom.js')  }}"></script>
-
         <script type="text/javascript">
             //paste this code under head tag or in a seperate js file.
             // Wait for window load
@@ -56,19 +51,8 @@ Author URL: http://saintswebnology.com
             });
         </script>
     <!-- //js -->
-
-        <!--fonts-->
-{{--        <link href='{{ URL::to('https://fonts.googleapis.com/css?family=Ubuntu+Condensed')  }}' rel='stylesheet'
-              type='text/css'>
-        <link href="{{ URL::to('https://fonts.googleapis.com/css?family=Roboto:300')  }}" rel="stylesheet">
-        <link href='{{ URL::to('https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic')  }}'
-              rel='stylesheet' type='text/css'> --}}
-        <!--//fonts-->
-
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="{{ URL::to('js/bootstrap.min.js')  }}"></script>
-    <script src="{{ URL::to('js/bootstrap-select.js')  }}"></script>
     <script>
         $(document).ready(function () {
             var mySelect = $('#first-disabled2');
@@ -93,15 +77,6 @@ Author URL: http://saintswebnology.com
     <link href="{{ URL::to('css/jquery.uls.css')  }}" rel="stylesheet"/>
     <link href="{{ URL::to('css/jquery.uls.grid.css')  }}" rel="stylesheet"/>
     <link href="{{ URL::to('css/jquery.uls.lcd.css')  }}" rel="stylesheet"/>
-    <!-- Source -->
-    <script src="{{ URL::to('js/jquery.uls.data.js')  }}"></script>
-    <script src="{{ URL::to('js/jquery.uls.data.utils.js')  }}"></script>
-    <script src="{{ URL::to('js/jquery.uls.lcd.js')  }}"></script>
-    <script src="{{ URL::to('js/jquery.uls.languagefilter.js')  }}"></script>
-    <script src="{{ URL::to('js/jquery.uls.regionfilter.js')  }}"></script>
-    <script src="{{ URL::to('js/jquery.uls.core.js')  }}"></script>
-    <script src="{{ URL::to('js/jquery.uls.core.js')  }}"></script>
-    <script src="{{ URL::to('js/jquery.leanModal.min.js') }}"></script>
     <script>
         $(document).ready(function () {
             $('.uls-trigger').uls({
@@ -124,8 +99,19 @@ Author URL: http://saintswebnology.com
 <body>
 <div class="se-pre-con"></div>
 
+<!-- Source -->
+<script src="{{ URL::to('js/modernizr.custom.js')  }}"></script>
+<script src="{{ URL::to('js/jquery.uls.data.js')  }}"></script>
+<script src="{{ URL::to('js/jquery.uls.data.utils.js')  }}"></script>
+<script src="{{ URL::to('js/jquery.uls.lcd.js')  }}"></script>
+<script src="{{ URL::to('js/jquery.uls.languagefilter.js')  }}"></script>
+<script src="{{ URL::to('js/jquery.uls.regionfilter.js')  }}"></script>
+<script src="{{ URL::to('js/jquery.uls.core.js')  }}"></script>
+<script src="{{ URL::to('js/jquery.uls.core.js')  }}"></script>
+<script src="{{ URL::to('js/jquery.leanModal.min.js') }}"></script>
 <script src="{{ URL::to('js/jquery.validate.min.js')  }}"></script>
 <script src="{{ URL::to('js/sweetalert.min.js')  }}"></script>
+<script src="{{ URL::to('js/bootstrap-select.js')  }}"></script>
 
 @include('sweet::alert')
 
