@@ -110,7 +110,7 @@ Author URL: http://saintswebnology.com
 <script async src="{{ URL::to('js/jquery.leanModal.min.js') }}"></script>
 <script async src="{{ URL::to('js/jquery.validate.min.js')  }}"></script>
 <script async src="{{ URL::to('js/sweetalert.min.js')  }}"></script>
-<script async src="{{ URL::to('js/bootstrap-select.js')  }}"></script>
+<script src="{{ URL::to('js/bootstrap-select.js')  }}"></script>
 
 @include('sweet::alert')
 
